@@ -28,15 +28,15 @@ Requirements for full jurisdiction coverage release. Each maps to roadmap phases
 - [x] **CALC-03**: User can enter a purchase amount and get exact tax calculation with per-jurisdiction breakdown
 - [x] **CALC-04**: Calculator handles origin vs destination taxation — 11 origin-based states use seller location, 39 destination-based use buyer location
 - [x] **CALC-05**: User can enter both seller address (origin) and buyer address (destination) for accurate cross-state calculation
-- [ ] **CALC-06**: Per-state JSON files are lazy-loaded on demand (not bundled in initial page load)
+- [x] **CALC-06**: Per-state JSON files are lazy-loaded on demand (not bundled in initial page load)
 
 ### Product Taxability
 
 - [x] **TAXB-01**: Calculator applies grocery exemptions — tax-free or reduced rate in applicable states
 - [x] **TAXB-02**: Calculator applies clothing exemptions — tax-free in NY, PA, NJ, MN, and other applicable states
 - [x] **TAXB-03**: Calculator applies medicine/pharmaceutical exemptions per state rules
-- [ ] **TAXB-04**: Calculator handles prepared food category — separate (usually higher) rate where applicable
-- [ ] **TAXB-05**: Product taxability rules are data-driven (JSON config, not hardcoded logic) for easy updates
+- [x] **TAXB-04**: Calculator handles prepared food category — separate (usually higher) rate where applicable
+- [x] **TAXB-05**: Product taxability rules are data-driven (JSON config, not hardcoded logic) for easy updates
 
 ### State Guide
 
@@ -93,12 +93,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CALC-03 | Phase 2 | Complete |
 | CALC-04 | Phase 2 | Complete |
 | CALC-05 | Phase 2 | Complete |
-| CALC-06 | Phase 2 | Pending |
+| CALC-06 | Phase 2 | Complete |
 | TAXB-01 | Phase 2 | Complete |
 | TAXB-02 | Phase 2 | Complete |
 | TAXB-03 | Phase 2 | Complete |
-| TAXB-04 | Phase 2 | Pending |
-| TAXB-05 | Phase 2 | Pending |
+| TAXB-04 | Phase 2 | Complete |
+| TAXB-05 | Phase 2 | Complete |
 | GUID-01 | Phase 3 | Pending |
 | GUID-02 | Phase 3 | Pending |
 | GUID-03 | Phase 3 | Pending |
