@@ -31,7 +31,8 @@ Given any US address and purchase amount, return the exact tax breakdown across 
 - ✓ Eliminate dual source of truth (data-driven taxRules.ts) — Phase 1
 - ✓ Floating-point rounding fix — Phase 1
 - ✓ "Rates as of" freshness badge — Phase 1
-- [ ] Keep and enhance state guide pages — existing per-state guides remain, enriched with local tax info
+- ✓ State guide pages enriched with local rate tables + origin/dest badges — Phase 3
+- ✓ Side-by-side ZIP comparison tool at /compare — Phase 3
 
 ### Out of Scope
 
@@ -85,4 +86,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-24 after Phase 2 completion*
+*Last updated: 2026-03-24 after Phase 3 completion (all phases complete)*
