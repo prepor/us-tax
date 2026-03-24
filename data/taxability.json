@@ -69,5 +69,14 @@
       "WY": { "status": "taxable", "note": "Candy excluded from food exemption" },
       "DC": { "status": "taxable", "note": "Candy excluded from food exemption" }
     }
+  },
+  "prepared_food": {
+    "default": "taxable",
+    "overrides": {
+      "UT": { "status": "reduced", "rate": 0.03, "note": "Prepared food taxed at reduced 3.0% rate in Utah" },
+      "AR": { "status": "reduced", "rate": 0.02, "note": "Prepared food taxed at reduced 2% rate in Arkansas" },
+      "IL": { "status": "reduced", "rate": 0.01, "note": "Prepared food taxed at reduced 1% rate in Illinois" },
+      "VA": { "status": "reduced", "rate": 0.025, "note": "Prepared food taxed at 2.5% in Virginia" }
+    }
   }
 }

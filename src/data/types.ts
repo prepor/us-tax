@@ -55,6 +55,35 @@ export interface TaxabilityRule {
   note: string;
 }
 
+// ProductCategory -- 5 categories for the calculator (D-08)
+export type ProductCategory = "general" | "groceries" | "clothing" | "medicine" | "prepared_food";
+
+// JurisdictionBreakdown -- per-jurisdiction tax detail (D-11, D-12)
+export interface JurisdictionBreakdown {
+  jurisdiction: "State" | "County" | "City" | "Special District";
+  name: string;
+  rate: number;
+  taxAmount: number;
+}
+
+// TaxBreakdownResult -- full calculation result (D-11, D-12, D-15)
+export interface TaxBreakdownResult {
+  buyerZip: string;
+  sellerZip?: string;
+  stateName: string;
+  stateAbbr: string;
+  sourcingRule: "origin" | "destination";
+  combinedRate: number;
+  jurisdictions: JurisdictionBreakdown[];
+  productCategory: ProductCategory;
+  subtotal: number;
+  taxableAmount: number;
+  totalTax: number;
+  total: number;
+  notes: string[];
+  hasMultipleJurisdictions: boolean;
+}
+
 // ZipEntry -- one tax jurisdiction within a ZIP code
 export interface ZipEntry {
   region: string;
@@ -76,6 +105,7 @@ export interface StateTaxData {
     clothing: TaxabilityRule;
     medicine: TaxabilityRule;
     candy: TaxabilityRule;
+    prepared_food: TaxabilityRule;
   };
   zips: Record<string, ZipEntry[]>;
 }
