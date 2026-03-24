@@ -37,6 +37,7 @@ export default function Layout() {
               {[
                 { to: "/", label: "States" },
                 { to: "/calculator", label: "Tax Calculator" },
+                { to: "/compare", label: "Compare" },
               ].map(({ to, label }) => (
                 <Link
                   key={to}
