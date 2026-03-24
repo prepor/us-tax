@@ -48,8 +48,8 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Extend data layer: prepared_food taxability, new types (TaxBreakdownResult, ProductCategory), sample data generator
-- [ ] 02-02-PLAN.md — Core engine modules: ZIP-to-state resolver, lazy rate lookup, tax calculator with origin/destination
+- [x] 02-01-PLAN.md — Extend data layer: prepared_food taxability, new types (TaxBreakdownResult, ProductCategory), sample data generator
+- [x] 02-02-PLAN.md — Core engine modules: ZIP-to-state resolver, lazy rate lookup, tax calculator with origin/destination
 - [ ] 02-03-PLAN.md — Rewrite CalculatorPage with ZIP input, breakdown table, and category selector
 
 ### Phase 3: State Guides & Comparison
