@@ -7,3 +7,4 @@ src/data/states.json
 *.log
 .DS_Store
 public/tax-data/
+.claude/worktrees/
