@@ -50,7 +50,7 @@ Plans:
 Plans:
 - [x] 02-01-PLAN.md — Extend data layer: prepared_food taxability, new types (TaxBreakdownResult, ProductCategory), sample data generator
 - [x] 02-02-PLAN.md — Core engine modules: ZIP-to-state resolver, lazy rate lookup, tax calculator with origin/destination
-- [ ] 02-03-PLAN.md — Rewrite CalculatorPage with ZIP input, breakdown table, and category selector
+- [x] 02-03-PLAN.md — Rewrite CalculatorPage with ZIP input, breakdown table, and category selector
 
 ### Phase 3: State Guides & Comparison
 **Goal**: State guide pages show local jurisdiction details and users can compare tax rates across locations
