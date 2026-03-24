@@ -8,3 +8,4 @@ src/data/states.json
 .DS_Store
 public/tax-data/
 .claude/worktrees/
+test-results/
