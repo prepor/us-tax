@@ -28,12 +28,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. A single build command produces per-state JSON files with state/county/city/district rate breakdowns from Avalara CSV source data
   4. Build-time validation catches rate anomalies and the pipeline fails loudly on bad data
   5. Every page displaying tax rates shows a "Rates as of [date]" freshness indicator
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
-- [ ] 01-03: TBD
+- [ ] 01-01-PLAN.md — Shared types, corrected taxability data, and Avalara CSV build pipeline
+- [ ] 01-02-PLAN.md — Refactor taxRules.ts (data-driven + rounding fix), consolidate page types, freshness badge
+- [ ] 01-03-PLAN.md — GitHub Actions monthly tax data refresh workflow
 
 ### Phase 2: Calculation Engine
 **Goal**: Users can enter a ZIP code and purchase details, and get an exact tax calculation with full jurisdiction breakdown, product taxability, and origin/destination awareness
