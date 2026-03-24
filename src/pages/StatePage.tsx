@@ -1,7 +1,10 @@
 import { useParams, Link } from "react-router-dom";
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import statesData from "../data/states.json";
-import type { StateEntry } from "../data/types";
+import type { StateEntry, StateTaxData } from "../data/types";
+import { loadStateData } from "../lib/rateLookup";
+import { ORIGIN_STATES } from "../lib/taxCalculator";
+import { formatPercent } from "../lib/formatters";
 
 const states = statesData as StateEntry[];
 
@@ -67,12 +70,74 @@ function InfoRow({ label, value, note }: { label: string; value: React.ReactNode
   );
 }
 
+// Convert "LOS ANGELES COUNTY" to "Los Angeles County"
+function toTitleCase(str: string): string {
+  return str
+    .toLowerCase()
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+// Determine if a region name represents a county or city
+function jurisdictionType(regionName: string): "County" | "City" {
+  const upper = regionName.toUpperCase();
+  if (upper.includes("COUNTY") || upper.includes("UNINCORPORATED")) {
+    return "County";
+  }
+  return "City";
+}
+
+// Extract top jurisdictions by combined rate from per-state ZIP data
+function extractTopJurisdictions(
+  data: StateTaxData,
+  limit = 10,
+): { name: string; type: "County" | "City"; localRate: number; combinedRate: number }[] {
+  // Collect all entries, deduplicate by region keeping the highest combined rate
+  const byRegion = new Map<string, { combined: number; localRate: number }>();
+
+  for (const entries of Object.values(data.zips)) {
+    for (const entry of entries) {
+      const existing = byRegion.get(entry.region);
+      const localRate = entry.county + entry.city + entry.special;
+      if (!existing || entry.combined > existing.combined) {
+        byRegion.set(entry.region, { combined: entry.combined, localRate });
+      }
+    }
+  }
+
+  // Convert to array, sort by combined rate descending, take top N
+  return Array.from(byRegion.entries())
+    .map(([region, { combined, localRate }]) => ({
+      name: region,
+      type: jurisdictionType(region),
+      localRate,
+      combinedRate: combined,
+    }))
+    .sort((a, b) => b.combinedRate - a.combinedRate)
+    .slice(0, limit);
+}
+
 export default function StatePage() {
   const { abbr } = useParams<{ abbr: string }>();
   const state = useMemo(
     () => states.find((s) => s.abbreviation === abbr?.toUpperCase()),
     [abbr]
   );
+
+  const [stateData, setStateData] = useState<StateTaxData | null>(null);
+  const [loadError, setLoadError] = useState(false);
+
+  useEffect(() => {
+    // Reset state when navigating between states
+    setStateData(null);
+    setLoadError(false);
+
+    // Skip loading for no-tax states or if state not found
+    if (!state || !state.hasSalesTax) return;
+
+    loadStateData(state.abbreviation)
+      .then(setStateData)
+      .catch(() => setLoadError(true));
+  }, [state]);
 
   if (!state) {
     return (
@@ -109,7 +174,25 @@ export default function StatePage() {
             ) : (
               <Badge color="green">No Sales Tax</Badge>
             )}
+            {state.hasSalesTax && (
+              <span
+                className={`inline-flex px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                  ORIGIN_STATES.has(state.abbreviation)
+                    ? "bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300"
+                    : "bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300"
+                }`}
+              >
+                {ORIGIN_STATES.has(state.abbreviation) ? "Origin-Based" : "Destination-Based"}
+              </span>
+            )}
           </div>
+          {state.hasSalesTax && (
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              {ORIGIN_STATES.has(state.abbreviation)
+                ? "Tax is calculated based on the seller's location"
+                : "Tax is calculated based on the buyer's location"}
+            </p>
+          )}
         </div>
       </div>
 
@@ -258,6 +341,63 @@ export default function StatePage() {
           </Link>
         </div>
       </div>
+
+      {/* Local Tax Rates -- full width below the grid */}
+      {state.hasSalesTax && (
+        <div className="mt-6">
+          <Section title="Local Tax Rates">
+            {stateData ? (
+              (() => {
+                const jurisdictions = extractTopJurisdictions(stateData);
+                if (jurisdictions.length === 0) {
+                  return (
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                      No local jurisdiction data available for this state.
+                    </p>
+                  );
+                }
+                return (
+                  <>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="border-b border-gray-200 dark:border-gray-700">
+                            <th className="text-left py-2 pr-4 text-gray-500 dark:text-gray-400 font-medium">Jurisdiction</th>
+                            <th className="text-left py-2 pr-4 text-gray-500 dark:text-gray-400 font-medium">Type</th>
+                            <th className="text-right py-2 pr-4 text-gray-500 dark:text-gray-400 font-medium">Local Rate</th>
+                            <th className="text-right py-2 text-gray-500 dark:text-gray-400 font-medium">Combined Rate</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {jurisdictions.map((j) => (
+                            <tr key={j.name} className="border-b border-gray-100 dark:border-gray-800 last:border-0">
+                              <td className="py-2 pr-4 font-medium">{toTitleCase(j.name)}</td>
+                              <td className="py-2 pr-4 text-gray-500 dark:text-gray-400">{j.type}</td>
+                              <td className="py-2 pr-4 text-right">{formatPercent(j.localRate)}</td>
+                              <td className="py-2 text-right font-medium">{formatPercent(j.combinedRate)}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-3">
+                      Showing highest combined rate per jurisdiction.
+                    </p>
+                  </>
+                );
+              })()
+            ) : loadError ? (
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                Local rate data is not yet available for this state.
+              </p>
+            ) : (
+              <p className="text-sm text-gray-400 dark:text-gray-500">
+                Loading local rates...
+              </p>
+            )}
+          </Section>
+        </div>
+      )}
     </div>
   );
 }
