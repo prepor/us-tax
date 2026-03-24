@@ -6,3 +6,6 @@ src/data/states.json
 .env.*.local
 *.log
 .DS_Store
+public/tax-data/
+.claude/worktrees/
+test-results/

@@ -1,0 +1,82 @@
+{
+  "groceries": {
+    "default": "exempt",
+    "overrides": {
+      "AL": { "status": "reduced", "rate": 0.02, "note": "State taxes groceries at reduced 2% rate" },
+      "HI": { "status": "taxable", "note": "GET applies to groceries at the full 4.0% rate" },
+      "ID": { "status": "taxable", "note": "Groceries taxable at full rate (income tax credit available)" },
+      "IL": { "status": "reduced", "rate": 0.01, "note": "Groceries taxed at reduced 1% state rate" },
+      "MO": { "status": "reduced", "rate": 0.01225, "note": "Groceries taxed at reduced 1.225% state rate" },
+      "MS": { "status": "reduced", "rate": 0.05, "note": "Groceries taxed at reduced 5% rate" },
+      "SD": { "status": "taxable", "note": "Groceries taxed at the full 4.2% state rate" },
+      "TN": { "status": "reduced", "rate": 0.04, "note": "Groceries taxed at reduced 4% state rate" },
+      "UT": { "status": "reduced", "rate": 0.03, "note": "Groceries taxed at reduced 3.0% combined rate" },
+      "VA": { "status": "reduced", "rate": 0.01, "note": "Groceries taxed at reduced 1% state rate" }
+    }
+  },
+  "clothing": {
+    "default": "taxable",
+    "overrides": {
+      "PA": { "status": "exempt", "note": "Clothing exempt from sales tax" },
+      "NJ": { "status": "exempt", "note": "Clothing exempt from sales tax" },
+      "MN": { "status": "exempt", "note": "Clothing exempt from sales tax" },
+      "VT": { "status": "exempt", "note": "Clothing exempt from sales tax" },
+      "NY": { "status": "reduced", "threshold": 110, "thresholdType": "exempt_below", "note": "Items under $110 exempt from state sales tax" },
+      "RI": { "status": "reduced", "threshold": 250, "thresholdType": "tax_excess", "note": "Tax applies to amount over $250" },
+      "MA": { "status": "reduced", "threshold": 175, "thresholdType": "tax_excess", "note": "First $175 exempt; tax applies to amount over $175" }
+    }
+  },
+  "medicine": {
+    "default": "exempt",
+    "overrides": {
+      "IL": { "status": "exempt", "note": "Prescription drugs exempt (1% rate for medical appliances only)" }
+    }
+  },
+  "candy": {
+    "default": "taxable",
+    "overrides": {
+      "CA": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "CO": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "CT": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "FL": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "GA": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "IA": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "IN": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "KY": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "LA": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "MA": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "MD": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "ME": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "MI": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "MN": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "NC": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "ND": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "NE": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "NJ": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "NM": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "NV": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "NY": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "OH": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "OK": { "status": "exempt", "note": "Oklahoma exempts candy (included in food exemption)" },
+      "PA": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "RI": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "SC": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "TX": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "VT": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "WA": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "WI": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "WV": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "WY": { "status": "taxable", "note": "Candy excluded from food exemption" },
+      "DC": { "status": "taxable", "note": "Candy excluded from food exemption" }
+    }
+  },
+  "prepared_food": {
+    "default": "taxable",
+    "overrides": {
+      "UT": { "status": "reduced", "rate": 0.03, "note": "Prepared food taxed at reduced 3.0% rate in Utah" },
+      "AR": { "status": "reduced", "rate": 0.02, "note": "Prepared food taxed at reduced 2% rate in Arkansas" },
+      "IL": { "status": "reduced", "rate": 0.01, "note": "Prepared food taxed at reduced 1% rate in Illinois" },
+      "VA": { "status": "reduced", "rate": 0.025, "note": "Prepared food taxed at 2.5% in Virginia" }
+    }
+  }
+}

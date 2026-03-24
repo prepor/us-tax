@@ -6,9 +6,11 @@
   "homepage": "https://prepor.github.io/us-tax/",
   "base": "/us-tax/",
   "scripts": {
-    "dev": "node scripts/build-data.mjs && vite",
+    "dev": "node scripts/build-tax-data.mjs && node scripts/build-data.mjs && vite",
     "build:data": "node scripts/build-data.mjs",
-    "build": "node scripts/build-data.mjs && tsc -b && vite build",
+    "build:tax-data": "node scripts/build-tax-data.mjs",
+    "build": "node scripts/build-tax-data.mjs && node scripts/build-data.mjs && tsc -b && vite build",
+    "generate:sample-data": "node scripts/generate-sample-data.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -17,12 +19,13 @@
     "react-router-dom": "^7"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "@tailwindcss/vite": "^4",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "^4",
     "tailwindcss": "^4",
     "typescript": "^5.7",
-    "vite": "^6",
-    "@vitejs/plugin-react": "^4"
+    "vite": "^6"
   }
 }
