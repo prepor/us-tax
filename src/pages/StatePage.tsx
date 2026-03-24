@@ -1,40 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useMemo } from "react";
 import statesData from "../data/states.json";
-
-interface StateEntry {
-  abbreviation: string;
-  name: string;
-  hasSalesTax: boolean;
-  stateRate: string;
-  stateRateNum: number;
-  combinedAvgRate: string;
-  combinedRateRange: string;
-  taxType: string;
-  nexus: {
-    revenueThreshold: string | null;
-    transactionThreshold: string | null;
-    bothRequired: boolean;
-    effectiveDate: string;
-    note: string;
-  } | null;
-  exemptions: {
-    groceries: string;
-    groceryNote: string;
-    clothing: string;
-    clothingNote: string;
-    prescriptionDrugs: string;
-    prescriptionNote: string;
-  };
-  hasLocalTax: boolean;
-  localTaxRange: string;
-  filingFrequency: string;
-  filingDeadline: string;
-  officialWebsite: string;
-  salesTaxPage: string;
-  registrationUrl: string;
-  contactPhone: string;
-}
+import type { StateEntry } from "../data/types";
 
 const states = statesData as StateEntry[];
 

@@ -2,6 +2,7 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export default function Layout() {
+  const [ratesDate, setRatesDate] = useState<string>("");
   const [dark, setDark] = useState(() => {
     if (typeof window === "undefined") return false;
     const stored = localStorage.getItem("theme");
@@ -14,6 +15,13 @@ export default function Layout() {
     document.documentElement.classList.toggle("dark", dark);
     localStorage.setItem("theme", dark ? "dark" : "light");
   }, [dark]);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}tax-data/manifest.json`)
+      .then(r => r.json())
+      .then((data: { ratesAsOf: string }) => setRatesDate(data.ratesAsOf))
+      .catch(() => setRatesDate(""));
+  }, []);
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -72,6 +80,11 @@ export default function Layout() {
             Demo site for informational purposes only. Tax rates and rules change frequently.
             Always verify with official state tax authorities before making compliance decisions.
           </p>
+          {ratesDate && (
+            <p className="text-center text-xs text-gray-400 dark:text-gray-500 mt-2">
+              Rates as of {ratesDate}
+            </p>
+          )}
         </div>
       </footer>
     </div>

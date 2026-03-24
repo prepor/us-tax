@@ -1,19 +1,7 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import statesData from "../data/states.json";
-
-interface StateEntry {
-  abbreviation: string;
-  name: string;
-  hasSalesTax: boolean;
-  stateRate: string;
-  stateRateNum: number;
-  taxType: string;
-  hasLocalTax: boolean;
-  nexus: {
-    revenueThreshold: string | null;
-  } | null;
-}
+import type { StateEntry } from "../data/types";
 
 const states = statesData as StateEntry[];
 
