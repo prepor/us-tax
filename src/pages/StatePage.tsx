@@ -86,6 +86,30 @@ function jurisdictionType(regionName: string): "County" | "City" {
   return "City";
 }
 
+// Compute rate stats from Avalara ZIP data
+function computeRateStats(data: StateTaxData): {
+  localMin: number; localMax: number;
+  combinedMin: number; combinedMax: number;
+  combinedAvg: number;
+} | null {
+  let localMin = Infinity, localMax = -Infinity;
+  let combinedMin = Infinity, combinedMax = -Infinity;
+  let combinedSum = 0, count = 0;
+  for (const entries of Object.values(data.zips)) {
+    for (const entry of entries) {
+      const localRate = entry.county + entry.city + entry.special;
+      if (localRate < localMin) localMin = localRate;
+      if (localRate > localMax) localMax = localRate;
+      if (entry.combined < combinedMin) combinedMin = entry.combined;
+      if (entry.combined > combinedMax) combinedMax = entry.combined;
+      combinedSum += entry.combined;
+      count++;
+    }
+  }
+  if (count === 0) return null;
+  return { localMin, localMax, combinedMin, combinedMax, combinedAvg: combinedSum / count };
+}
+
 // Extract top jurisdictions by combined rate from per-state ZIP data
 function extractTopJurisdictions(
   data: StateTaxData,
@@ -200,17 +224,30 @@ export default function StatePage() {
         {/* Tax Rates */}
         <Section title="Tax Rates">
           <InfoRow label="State rate" value={state.hasSalesTax ? state.stateRate : "0%"} />
-          {state.combinedAvgRate && (
-            <InfoRow label="Combined average" value={state.combinedAvgRate} />
-          )}
-          {state.combinedRateRange && (
-            <InfoRow label="Combined range" value={state.combinedRateRange} />
-          )}
-          <InfoRow
-            label="Local taxes"
-            value={state.hasLocalTax ? "Yes" : "No"}
-            note={state.hasLocalTax ? `Local rate range: ${state.localTaxRange}` : undefined}
-          />
+          {(() => {
+            const stats = stateData ? computeRateStats(stateData) : null;
+            return (
+              <>
+                <InfoRow
+                  label="Combined average"
+                  value={stats ? formatPercent(stats.combinedAvg) : (state.combinedAvgRate || "—")}
+                />
+                <InfoRow
+                  label="Combined range"
+                  value={stats ? `${formatPercent(stats.combinedMin)} – ${formatPercent(stats.combinedMax)}` : (state.combinedRateRange || "—")}
+                />
+                <InfoRow
+                  label="Local taxes"
+                  value={state.hasLocalTax ? "Yes" : "No"}
+                  note={state.hasLocalTax ? (
+                    stats
+                      ? `Local rate range: ${formatPercent(stats.localMin)} – ${formatPercent(stats.localMax)}`
+                      : `Local rate range: ${state.localTaxRange}`
+                  ) : undefined}
+                />
+              </>
+            );
+          })()}
         </Section>
 
         {/* Economic Nexus */}
