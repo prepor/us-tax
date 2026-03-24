@@ -203,25 +203,57 @@ export async function calculateFullTax(params: {
   // 4. Fetch per-state tax data
   const stateData = await loadStateData(rateState);
 
-  // 11. Early return for no-tax states
+  // 11. Handle no-state-tax states (may still have local taxes, e.g. AK)
   if (!stateData.hasSalesTax) {
-    notes.push(`${stateData.stateName} does not impose a sales tax.`);
-    if (!sellerZip) {
-      notes.push("Destination-based calculation (no seller location specified).");
+    const zipEntry = lookupZip(stateData, rateZip);
+    const localRate = zipEntry ? zipEntry.county + zipEntry.city + zipEntry.special : 0;
+
+    if (localRate === 0) {
+      notes.push(`${stateData.stateName} does not impose a sales tax.`);
+      return {
+        buyerZip,
+        sellerZip,
+        stateName: stateData.stateName,
+        stateAbbr: stateData.state,
+        sourcingRule,
+        combinedRate: 0,
+        jurisdictions: [],
+        productCategory: category,
+        subtotal: amount,
+        taxableAmount: 0,
+        totalTax: 0,
+        total: amount,
+        notes,
+        hasMultipleJurisdictions: false,
+      };
     }
+
+    // Local taxes exist despite no state tax (e.g., Juneau AK)
+    notes.push(`${stateData.stateName} has no state sales tax, but local taxes apply.`);
+    const jurisdictions: JurisdictionBreakdown[] = [];
+    if (zipEntry!.county > 0) {
+      jurisdictions.push({ jurisdiction: "County", name: zipEntry!.region, rate: zipEntry!.county, taxAmount: Math.round(amount * zipEntry!.county * 100) / 100 });
+    }
+    if (zipEntry!.city > 0) {
+      jurisdictions.push({ jurisdiction: "City", name: zipEntry!.region, rate: zipEntry!.city, taxAmount: Math.round(amount * zipEntry!.city * 100) / 100 });
+    }
+    if (zipEntry!.special > 0) {
+      jurisdictions.push({ jurisdiction: "Special District", name: zipEntry!.region, rate: zipEntry!.special, taxAmount: Math.round(amount * zipEntry!.special * 100) / 100 });
+    }
+    const totalTax = jurisdictions.reduce((sum, j) => sum + j.taxAmount, 0);
     return {
       buyerZip,
       sellerZip,
       stateName: stateData.stateName,
       stateAbbr: stateData.state,
       sourcingRule,
-      combinedRate: 0,
-      jurisdictions: [],
+      combinedRate: localRate,
+      jurisdictions,
       productCategory: category,
       subtotal: amount,
-      taxableAmount: 0,
-      totalTax: 0,
-      total: amount,
+      taxableAmount: amount,
+      totalTax,
+      total: Math.round((amount + totalTax) * 100) / 100,
       notes,
       hasMultipleJurisdictions: false,
     };

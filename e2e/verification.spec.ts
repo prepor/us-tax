@@ -10,7 +10,7 @@ async function calculate(
     category?: string;
   },
 ) {
-  await page.goto("./calculator");
+  await page.goto("/us-tax/#/calculator");
 
   // Fill buyer ZIP
   const buyerInput = page.locator('input[placeholder="e.g. 90210"]');
@@ -135,7 +135,7 @@ test.describe("Phase 2 Verification", () => {
 
 test.describe("Phase 3 Verification", () => {
   test("7. State page /state/CA has origin/destination badge", async ({ page }) => {
-    await page.goto("./state/CA");
+    await page.goto("/us-tax/#/state/CA");
 
     // Wait for the page to load
     await expect(page.locator("h1", { hasText: "California" })).toBeVisible({ timeout: 10000 });
@@ -145,7 +145,7 @@ test.describe("Phase 3 Verification", () => {
   });
 
   test("8. State page /state/CA has local rate table", async ({ page }) => {
-    await page.goto("./state/CA");
+    await page.goto("/us-tax/#/state/CA");
 
     // Wait for the page to load
     await expect(page.locator("h1", { hasText: "California" })).toBeVisible({ timeout: 10000 });
@@ -175,7 +175,7 @@ test.describe("Phase 3 Verification", () => {
   });
 
   test("9. Compare tool: ZIPs 90210 and 10001 show both results with delta", async ({ page }) => {
-    await page.goto("./compare");
+    await page.goto("/us-tax/#/compare");
 
     // Fill Location A ZIP
     const leftInput = page.locator('input[placeholder="e.g. 90210"]');
@@ -212,7 +212,7 @@ test.describe("Phase 3 Verification", () => {
   });
 
   test("10. State page /state/OR: no-tax state, no origin/destination badge, no rate table", async ({ page }) => {
-    await page.goto("./state/OR");
+    await page.goto("/us-tax/#/state/OR");
 
     // Wait for the page to load
     await expect(page.locator("h1", { hasText: "Oregon" })).toBeVisible({ timeout: 10000 });

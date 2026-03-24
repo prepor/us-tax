@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Dark mode toggle", () => {
   test("toggles dark class on html element", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/us-tax/");
 
     // Should start with system preference or stored preference
     const html = page.locator("html");
@@ -28,7 +28,7 @@ test.describe("Dark mode toggle", () => {
   });
 
   test("dark mode changes background color", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/us-tax/");
     const html = page.locator("html");
     const body = page.locator("div.min-h-screen");
 
