@@ -61,12 +61,12 @@ Plans:
   2. State guide pages display local tax rate tables showing top counties and cities with their rates
   3. State guide pages show whether the state uses origin-based or destination-based taxation
   4. User can compare tax rates for two ZIP codes side-by-side
-**Plans**: TBD
+**Plans**: 2 plans
 **UI hint**: yes
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
+- [ ] 03-01-PLAN.md — Enhance state pages with origin/dest badge and local rate table
+- [ ] 03-02-PLAN.md — Create ZIP code comparison tool at /compare with side-by-side results
 
 ## Progress
 
