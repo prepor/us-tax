@@ -80,35 +80,35 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FNDX-01 | TBD | Pending |
-| FNDX-02 | TBD | Pending |
-| FNDX-03 | TBD | Pending |
-| FNDX-04 | TBD | Pending |
-| DATA-01 | TBD | Pending |
-| DATA-02 | TBD | Pending |
-| DATA-03 | TBD | Pending |
-| DATA-04 | TBD | Pending |
-| CALC-01 | TBD | Pending |
-| CALC-02 | TBD | Pending |
-| CALC-03 | TBD | Pending |
-| CALC-04 | TBD | Pending |
-| CALC-05 | TBD | Pending |
-| CALC-06 | TBD | Pending |
-| TAXB-01 | TBD | Pending |
-| TAXB-02 | TBD | Pending |
-| TAXB-03 | TBD | Pending |
-| TAXB-04 | TBD | Pending |
-| TAXB-05 | TBD | Pending |
-| GUID-01 | TBD | Pending |
-| GUID-02 | TBD | Pending |
-| GUID-03 | TBD | Pending |
-| GUID-04 | TBD | Pending |
+| FNDX-01 | Phase 1 | Pending |
+| FNDX-02 | Phase 1 | Pending |
+| FNDX-03 | Phase 1 | Pending |
+| FNDX-04 | Phase 1 | Pending |
+| DATA-01 | Phase 1 | Pending |
+| DATA-02 | Phase 1 | Pending |
+| DATA-03 | Phase 1 | Pending |
+| DATA-04 | Phase 1 | Pending |
+| CALC-01 | Phase 2 | Pending |
+| CALC-02 | Phase 2 | Pending |
+| CALC-03 | Phase 2 | Pending |
+| CALC-04 | Phase 2 | Pending |
+| CALC-05 | Phase 2 | Pending |
+| CALC-06 | Phase 2 | Pending |
+| TAXB-01 | Phase 2 | Pending |
+| TAXB-02 | Phase 2 | Pending |
+| TAXB-03 | Phase 2 | Pending |
+| TAXB-04 | Phase 2 | Pending |
+| TAXB-05 | Phase 2 | Pending |
+| GUID-01 | Phase 3 | Pending |
+| GUID-02 | Phase 3 | Pending |
+| GUID-03 | Phase 3 | Pending |
+| GUID-04 | Phase 3 | Pending |
 
 **Coverage:**
 - v1 requirements: 23 total
-- Mapped to phases: 0
-- Unmapped: 23 ⚠️
+- Mapped to phases: 23
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-24*
-*Last updated: 2026-03-24 after initial definition*
+*Last updated: 2026-03-24 after roadmap creation*
