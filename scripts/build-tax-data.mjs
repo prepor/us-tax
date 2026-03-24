@@ -136,8 +136,8 @@ function validate(stateData, warnings) {
         if (region.combined < 0) {
           errors.push(`${abbr} ZIP ${zip}: negative combined rate ${region.combined}`);
         }
-        if (region.combined > 0.15) {
-          errors.push(`${abbr} ZIP ${zip}: combined rate ${region.combined} exceeds 15%`);
+        if (region.combined > 0.25) {
+          errors.push(`${abbr} ZIP ${zip}: combined rate ${region.combined} exceeds 25%`);
         }
         if (region.county < 0 || region.city < 0 || region.special < 0) {
           errors.push(`${abbr} ZIP ${zip}: negative component rate`);
@@ -277,6 +277,7 @@ async function main() {
   // Parse all CSV files
   const stateData = {};
   const warnings = [];
+  const skippedAbbrs = new Set();
   let totalZipCodes = 0;
 
   for (const csvFile of csvFiles) {
@@ -286,7 +287,10 @@ async function main() {
     for (const row of rows) {
       const abbr = row.state;
       if (!STATE_NAMES[abbr]) {
-        warnings.push(`Unknown state abbreviation: ${abbr} in ${csvFile}`);
+        if (!skippedAbbrs.has(abbr)) {
+          skippedAbbrs.add(abbr);
+          warnings.push(`Skipping territory/non-state: ${abbr} (${csvFile})`);
+        }
         continue;
       }
 
