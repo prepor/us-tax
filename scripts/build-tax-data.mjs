@@ -91,7 +91,7 @@ function parseCsv(content) {
  * If the state has an override, use it; otherwise use the category default.
  */
 function resolveTaxability(taxabilityData, stateAbbr) {
-  const categories = ["groceries", "clothing", "medicine", "candy"];
+  const categories = ["groceries", "clothing", "medicine", "candy", "prepared_food"];
   const result = {};
 
   for (const cat of categories) {
@@ -218,6 +218,7 @@ function createNoTaxStateData(abbr, taxabilityData, updated) {
       clothing: { status: "exempt", note: "No state sales tax" },
       medicine: { status: "exempt", note: "No state sales tax" },
       candy: { status: "exempt", note: "No state sales tax" },
+      prepared_food: { status: "exempt", note: "No state sales tax" },
     },
     zips: {},
   };
@@ -381,6 +382,7 @@ async function main() {
           clothing: { status: "exempt", note: "No state sales tax" },
           medicine: { status: "exempt", note: "No state sales tax" },
           candy: { status: "exempt", note: "No state sales tax" },
+          prepared_food: { status: "exempt", note: "No state sales tax" },
         }
       : resolveTaxability(taxabilityData, abbr);
 
