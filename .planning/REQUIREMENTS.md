@@ -9,16 +9,16 @@ Requirements for full jurisdiction coverage release. Each maps to roadmap phases
 
 ### Foundation
 
-- [ ] **FNDX-01**: Fix 5 data inconsistencies between state markdown files and taxRules.ts (AL, AR, KS, MS, ID)
+- [x] **FNDX-01**: Fix 5 data inconsistencies between state markdown files and taxRules.ts (AL, AR, KS, MS, ID)
 - [ ] **FNDX-02**: Fix floating-point rounding — use integer cents or per-line rounding for tax calculations
-- [ ] **FNDX-03**: Eliminate dual source of truth — single authoritative data source feeds both guide pages and calculator
+- [x] **FNDX-03**: Eliminate dual source of truth — single authoritative data source feeds both guide pages and calculator
 - [ ] **FNDX-04**: Display "Rates as of [date]" freshness indicator on all pages showing tax rates
 
 ### Data Pipeline
 
-- [ ] **DATA-01**: Build-time pipeline ingests Avalara free CSV rate tables covering all 50 states + DC
-- [ ] **DATA-02**: Pipeline normalizes CSV data into per-state JSON files with state/county/city/district rate breakdown
-- [ ] **DATA-03**: Pipeline validates ingested rates against known reference values during build
+- [x] **DATA-01**: Build-time pipeline ingests Avalara free CSV rate tables covering all 50 states + DC
+- [x] **DATA-02**: Pipeline normalizes CSV data into per-state JSON files with state/county/city/district rate breakdown
+- [x] **DATA-03**: Pipeline validates ingested rates against known reference values during build
 - [ ] **DATA-04**: GitHub Actions cron job refreshes tax rate data monthly and rebuilds/deploys automatically
 
 ### Tax Calculation
@@ -80,13 +80,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FNDX-01 | Phase 1 | Pending |
+| FNDX-01 | Phase 1 | Complete |
 | FNDX-02 | Phase 1 | Pending |
-| FNDX-03 | Phase 1 | Pending |
+| FNDX-03 | Phase 1 | Complete |
 | FNDX-04 | Phase 1 | Pending |
-| DATA-01 | Phase 1 | Pending |
-| DATA-02 | Phase 1 | Pending |
-| DATA-03 | Phase 1 | Pending |
+| DATA-01 | Phase 1 | Complete |
+| DATA-02 | Phase 1 | Complete |
+| DATA-03 | Phase 1 | Complete |
 | DATA-04 | Phase 1 | Pending |
 | CALC-01 | Phase 2 | Pending |
 | CALC-02 | Phase 2 | Pending |

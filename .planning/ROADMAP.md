@@ -31,7 +31,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Shared types, corrected taxability data, and Avalara CSV build pipeline
+- [x] 01-01-PLAN.md — Shared types, corrected taxability data, and Avalara CSV build pipeline
 - [ ] 01-02-PLAN.md — Refactor taxRules.ts (data-driven + rounding fix), consolidate page types, freshness badge
 - [ ] 01-03-PLAN.md — GitHub Actions monthly tax data refresh workflow
 
