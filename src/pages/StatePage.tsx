@@ -112,7 +112,7 @@ function extractTopJurisdictions(
       localRate,
       combinedRate: combined,
     }))
-    .sort((a, b) => b.combinedRate - a.combinedRate)
+    .sort((a, b) => b.localRate - a.localRate)
     .slice(0, limit);
 }
 
@@ -381,7 +381,7 @@ export default function StatePage() {
                       </table>
                     </div>
                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-3">
-                      Showing highest combined rate per jurisdiction.
+                      Top 10 jurisdictions by local tax rate. Combined rate = state rate ({formatPercent(stateData.stateRate)}) + local rate.
                     </p>
                   </>
                 );
