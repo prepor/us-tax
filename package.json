@@ -6,9 +6,10 @@
   "homepage": "https://prepor.github.io/us-tax/",
   "base": "/us-tax/",
   "scripts": {
-    "dev": "node scripts/build-data.mjs && vite",
+    "dev": "node scripts/build-tax-data.mjs && node scripts/build-data.mjs && vite",
     "build:data": "node scripts/build-data.mjs",
-    "build": "node scripts/build-data.mjs && tsc -b && vite build",
+    "build:tax-data": "node scripts/build-tax-data.mjs",
+    "build": "node scripts/build-tax-data.mjs && node scripts/build-data.mjs && tsc -b && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
