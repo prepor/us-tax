@@ -6,7 +6,7 @@ export default defineConfig({
     baseURL: "http://localhost:4173/us-tax/",
   },
   webServer: {
-    command: "npm run build && npx vite preview --port 4173",
+    command: "node scripts/generate-sample-data.mjs && npm run build && npx vite preview --port 4173",
     port: 4173,
     reuseExistingServer: true,
   },
