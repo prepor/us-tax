@@ -26,7 +26,11 @@ Given any US address and purchase amount, return the exact tax breakdown across 
 - [ ] Origin vs destination taxation — calculate based on seller location vs buyer address, per state rules
 - [ ] Product taxability — handle exemptions for groceries, clothing, medicine by jurisdiction
 - [ ] Combined rate calculator — enter amount + addresses, get exact tax with full breakdown
-- [ ] Fix 5 data inconsistencies — AL, AR, KS, MS, ID rates differ between source markdown and taxRules.ts
+- ✓ Fix 5 data inconsistencies — AL, AR, KS, MS, ID — Phase 1
+- ✓ Avalara CSV build pipeline with per-state JSON output — Phase 1
+- ✓ Eliminate dual source of truth (data-driven taxRules.ts) — Phase 1
+- ✓ Floating-point rounding fix — Phase 1
+- ✓ "Rates as of" freshness badge — Phase 1
 - [ ] Keep and enhance state guide pages — existing per-state guides remain, enriched with local tax info
 
 ### Out of Scope
@@ -81,4 +85,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-24 after initialization*
+*Last updated: 2026-03-24 after Phase 1 completion*
