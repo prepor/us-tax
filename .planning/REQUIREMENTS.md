@@ -10,9 +10,9 @@ Requirements for full jurisdiction coverage release. Each maps to roadmap phases
 ### Foundation
 
 - [x] **FNDX-01**: Fix 5 data inconsistencies between state markdown files and taxRules.ts (AL, AR, KS, MS, ID)
-- [ ] **FNDX-02**: Fix floating-point rounding — use integer cents or per-line rounding for tax calculations
+- [x] **FNDX-02**: Fix floating-point rounding — use integer cents or per-line rounding for tax calculations
 - [x] **FNDX-03**: Eliminate dual source of truth — single authoritative data source feeds both guide pages and calculator
-- [ ] **FNDX-04**: Display "Rates as of [date]" freshness indicator on all pages showing tax rates
+- [x] **FNDX-04**: Display "Rates as of [date]" freshness indicator on all pages showing tax rates
 
 ### Data Pipeline
 
@@ -81,9 +81,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | FNDX-01 | Phase 1 | Complete |
-| FNDX-02 | Phase 1 | Pending |
+| FNDX-02 | Phase 1 | Complete |
 | FNDX-03 | Phase 1 | Complete |
-| FNDX-04 | Phase 1 | Pending |
+| FNDX-04 | Phase 1 | Complete |
 | DATA-01 | Phase 1 | Complete |
 | DATA-02 | Phase 1 | Complete |
 | DATA-03 | Phase 1 | Complete |
