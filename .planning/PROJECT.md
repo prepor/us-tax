@@ -21,11 +21,11 @@ Given any US address and purchase amount, return the exact tax breakdown across 
 ### Active
 
 - [ ] Full jurisdiction coverage — all ~13,000 US tax jurisdictions (state/county/city/district) via static dataset
-- [ ] Address-to-jurisdiction lookup — ZIP code (or ZIP+4) to exact tax rate mapping
-- [ ] Tax rate breakdown — show state, county, city, and district rates separately
-- [ ] Origin vs destination taxation — calculate based on seller location vs buyer address, per state rules
-- [ ] Product taxability — handle exemptions for groceries, clothing, medicine by jurisdiction
-- [ ] Combined rate calculator — enter amount + addresses, get exact tax with full breakdown
+- ✓ Address-to-jurisdiction lookup — ZIP code to exact tax rate mapping — Phase 2
+- ✓ Tax rate breakdown — state, county, city, and district rates separately — Phase 2
+- ✓ Origin vs destination taxation — seller/buyer location based — Phase 2
+- ✓ Product taxability — groceries, clothing, medicine, prepared food exemptions — Phase 2
+- ✓ Combined rate calculator — amount + addresses + category → full breakdown — Phase 2
 - ✓ Fix 5 data inconsistencies — AL, AR, KS, MS, ID — Phase 1
 - ✓ Avalara CSV build pipeline with per-state JSON output — Phase 1
 - ✓ Eliminate dual source of truth (data-driven taxRules.ts) — Phase 1
@@ -85,4 +85,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-24 after Phase 1 completion*
+*Last updated: 2026-03-24 after Phase 2 completion*
