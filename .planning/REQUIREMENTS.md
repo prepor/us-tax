@@ -40,10 +40,10 @@ Requirements for full jurisdiction coverage release. Each maps to roadmap phases
 
 ### State Guide
 
-- [ ] **GUID-01**: Existing 51 state guide pages remain functional and accessible
-- [ ] **GUID-02**: State guide pages show local tax rate tables (top counties/cities in that state)
-- [ ] **GUID-03**: State guide pages display origin vs destination classification
-- [ ] **GUID-04**: Side-by-side ZIP code comparison tool — compare tax rates for two ZIP codes
+- [x] **GUID-01**: Existing 51 state guide pages remain functional and accessible
+- [x] **GUID-02**: State guide pages show local tax rate tables (top counties/cities in that state)
+- [x] **GUID-03**: State guide pages display origin vs destination classification
+- [x] **GUID-04**: Side-by-side ZIP code comparison tool — compare tax rates for two ZIP codes
 
 ## v2 Requirements
 
@@ -99,10 +99,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TAXB-03 | Phase 2 | Complete |
 | TAXB-04 | Phase 2 | Complete |
 | TAXB-05 | Phase 2 | Complete |
-| GUID-01 | Phase 3 | Pending |
-| GUID-02 | Phase 3 | Pending |
-| GUID-03 | Phase 3 | Pending |
-| GUID-04 | Phase 3 | Pending |
+| GUID-01 | Phase 3 | Complete |
+| GUID-02 | Phase 3 | Complete |
+| GUID-03 | Phase 3 | Complete |
+| GUID-04 | Phase 3 | Complete |
 
 **Coverage:**
 - v1 requirements: 23 total
