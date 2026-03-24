@@ -45,13 +45,12 @@ Plans:
   3. User can specify seller and buyer locations, and the calculator correctly applies origin-based or destination-based rules per state
   4. Grocery, clothing, medicine, and prepared food categories apply correct exemptions or reduced rates per jurisdiction
   5. Per-state rate data loads on demand (not bundled in initial page load) with no perceptible delay
-**Plans**: TBD
-**UI hint**: yes
+**Plans**: 3 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
-- [ ] 02-03: TBD
+- [ ] 02-01-PLAN.md — Extend data layer: prepared_food taxability, new types (TaxBreakdownResult, ProductCategory), sample data generator
+- [ ] 02-02-PLAN.md — Core engine modules: ZIP-to-state resolver, lazy rate lookup, tax calculator with origin/destination
+- [ ] 02-03-PLAN.md — Rewrite CalculatorPage with ZIP input, breakdown table, and category selector
 
 ### Phase 3: State Guides & Comparison
 **Goal**: State guide pages show local jurisdiction details and users can compare tax rates across locations
